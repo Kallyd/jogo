@@ -1,5 +1,5 @@
 // Listas para guardar as atualizações.
-var listaIdLetras = [],
+let listaIdLetras = [],
   listaSvgPartes = [],
   palavra = [],
   letrasSelecionadas = [],
@@ -25,7 +25,7 @@ JogadoresDados = {
   tentativas2: 6,
 };
 
-var palavrasMutiplay = {
+let palavrasMutiplay = {
   1: {
     dica: "Um País com 5 letras!",
     Palavra1: "Egito",
@@ -74,14 +74,14 @@ var palavrasMutiplay = {
 };
 
 // Variaveis de controle.
-var tentativas = 0,
+let tentativas = 0,
   resultado = 0,
   score = 0,
   modoDeJogo = 0,
   jogador = 0;
 
 // Lista de palavras.
-var listaPaises = [
+let listaPaises = [
   "Angola",
   "Argentina",
   "Brasil",
@@ -93,7 +93,7 @@ var listaPaises = [
   "Estados Unidos",
   "Paraguai",
 ];
-var listaFrutas = [
+let listaFrutas = [
   "Abacaxi",
   "Abacate",
   "Mamão",
@@ -108,7 +108,7 @@ var listaFrutas = [
   "Coco",
   "Guaraná",
 ];
-var listaAnimais = [
+let listaAnimais = [
   "Ganso",
   "Raia",
   "Sapo",
@@ -134,8 +134,8 @@ var listaAnimais = [
   "Leão",
   "Baleia",
 ];
-var listaOceanos = ["Pacífico", "Atlântico", "Índico", "Ártico"];
-var listaTecnologia = [
+let listaOceanos = ["Pacífico", "Atlântico", "Índico", "Ártico"];
+let listaTecnologia = [
   "Celular",
   "Computador",
   "Telefone",
@@ -167,10 +167,10 @@ window.onload = function () {
 
 // Função para gerar os li das palavras a serem acertadas, retorna uma lista com os ids dos li.
 function criaLista(texto = [], tag, id) {
-  var ListaPalavras = document.getElementById(tag);
-  var listaId = [];
-  for (var i = 0; i < texto.length; i++) {
-    var novoLi = document.createElement("li");
+  let ListaPalavras = document.getElementById(tag);
+  let listaId = [];
+  for (let i = 0; i < texto.length; i++) {
+    let novoLi = document.createElement("li");
     novoLi.textContent = "  ";
     if (texto[i] != " ") {
       novoLi.className = "letra";
@@ -188,8 +188,8 @@ function criaLista(texto = [], tag, id) {
 
 // Mostra as letras erradas na tela.
 function letrasErradas(tecla) {
-  var ListaPalavras = document.getElementById("letrasErradas");
-  var novoLi = document.createElement("li");
+  let ListaPalavras = document.getElementById("letrasErradas");
+  let novoLi = document.createElement("li");
   novoLi.textContent = tecla;
   novoLi.className = "letra";
   novoLi.id = "erro" + letrasErr.length;
@@ -214,8 +214,8 @@ function removeAcento(texto = []) {
 
 // função que conta os espaços das strings
 function contaEspaco(texto) {
-  var quant = 0;
-  for (var i = 0; i < texto.length; i++) {
+  let quant = 0;
+  for (let i = 0; i < texto.length; i++) {
     if (texto[i] == " ") {
       quant = 1 + quant;
     }
@@ -241,7 +241,7 @@ function desabilitaBotaoClicado(id_btn, cor) {
 }
 // Função que reabilita as teclas clicadas, apenas no single player. 
 function reabilitaBotoesClicados(lista_id_btn) {
-  for (var i = 0; i < lista_id_btn.length; i++) {
+  for (let i = 0; i < lista_id_btn.length; i++) {
     document.getElementById(lista_id_btn[i]).style.color = "#000000";
     document.getElementById(lista_id_btn[i]).style.backgroundColor = "#efefef";
     document.getElementById(lista_id_btn[i]).disabled = false;
@@ -258,12 +258,12 @@ function clickTeclado(tecla) {
     // If para executar o modo single player.
   if (modoDeJogo == 1) {
     if (palavra.length > 0) {
-      var auxText = removeAcento(palavra);
+      let auxText = removeAcento(palavra);
 
       if (letrasSelecionadas.indexOf(tecla) == -1) {
         letrasSelecionadas = letrasSelecionadas + tecla;
         if (palavra.length > 0) {
-          for (var i = 0; i < palavra.length; i++) {
+          for (let i = 0; i < palavra.length; i++) {
             if (auxText[i] == tecla) {
               document.getElementById(listaIdLetras[i]).textContent =
                 palavra[i].toUpperCase();
@@ -308,9 +308,9 @@ function clickTeclado(tecla) {
   if (modoDeJogo == 2) {
     document.getElementById("tentivPl1").textContent = JogadoresDados.tentativas1;
     document.getElementById("tentivPl2").textContent = JogadoresDados.tentativas2;
-    var palavraPlay;
-    var idList = [];
-    var erros, certas;
+    let palavraPlay;
+    let idList = [];
+    let erros, certas;
     if (jogador == 1){ 
       erros = listaPalavrasErradasMultp[0];
       certas = listaPalavrasCertasMultp[0]
@@ -346,7 +346,7 @@ function clickTeclado(tecla) {
           idList = JogadoresDados.idLi2;
         }
 
-        var aux = removeAcento(palavraPlay).toUpperCase();
+        let aux = removeAcento(palavraPlay).toUpperCase();
         for (var i = 0; i < palavraPlay.length; i++) {
           if (aux[i] == tecla) {
             document.getElementById(idList[i]).textContent = palavraPlay[i].toUpperCase();
@@ -472,10 +472,10 @@ function reiniciarElementosDaPagina() {
     "pescocoID",
     "cabecaID",
   ];
-  for(var i = 0; i < listaSvgPartes.length; i++){
+  for(let i = 0; i < listaSvgPartes.length; i++){
     document.getElementById(listaSvgPartes[i]).style.visibility = "hidden";
   }
-  for (var i = 0; i < listaSvgPartes.length; i++) {
+  for (let i = 0; i < listaSvgPartes.length; i++) {
     document.getElementById(listaSvgPartes[i] + 1).style.visibility = "hidden";
     document.getElementById(listaSvgPartes[i] + 2).style.visibility = "hidden";
   }
@@ -485,13 +485,13 @@ function reiniciarElementosDaPagina() {
 
   // Limpa as listas e as letras dentro dos vetores.
   if (listaIdLetras.length > 0) {
-    for (var i = 0; i < listaIdLetras.length; i++) {
+    for (let i = 0; i < listaIdLetras.length; i++) {
       document.getElementById(listaIdLetras[i]).remove();
     }
     listaIdLetras = [];
   }
   if (letrasErr.length > 0) {
-    for (var i = 0; i < letrasErr.length; i++) {
+    for (let i = 0; i < letrasErr.length; i++) {
       document.getElementById(letrasErr[i]).remove();
     }
     letrasErr = [];
@@ -574,7 +574,7 @@ function jogoDoisPlay() {
     "pescocoID2",
     "cabecaID2",
   ];
-  for (var i = 0; i < 7; i++) {
+  for (let i = 0; i < 7; i++) {
     document.getElementById(ListaParaManipularPlayers.player1[i]).style.visibility =
       "hidden";
     document.getElementById(ListaParaManipularPlayers.player2[i]).style.visibility =
